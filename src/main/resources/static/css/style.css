@@ -1,0 +1,109 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 5rem;
+}
+
+main {
+    overflow:auto;
+    padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+.wrap{
+    min-height: 100%;
+    margin-top: -24px;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+    background-color: #555;
+    color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+main.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .sidebar a {float: left;}
+    main.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+footer{
+    background-color: #212529;
+    color: white;
+}
+
+
+
+.footer, .push {
+    height: 50px;
+}
+
+.advance-search h2{
+    font-size: 20px !important;
+    text-align: center !important;
+}

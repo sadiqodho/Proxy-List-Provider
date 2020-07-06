@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Proxy List Providers</title>
+    <div th:replace="includes/head :: head"></div>
+</head>
+
+<body>
+<nav th:replace="includes/header :: header"></nav>
+
+<div class="wrap">
+
+    <div th:replace="includes/sidebar :: sidebar"></div>
+    <main role="main" class="container main content">
+
+        <h1> About Us </h1>
+        <p> This is a <strong>Database and Web Techniques</strong> project. It is a semester project of Master in web engineering. </p>
+
+        <p>
+            My name is Muhammad Sadiq Odho, I am developer (both frontend and backend) of this project.
+            I tired to make this project user friendly as friendly as possible.
+        </p>
+
+    </main><!-- /.container -->
+
+</div>
+
+<div th:replace="includes/footer :: footer"></div>
+</body>
+
+<script>
+    $('document').ready(function(){
+        $('#about-nav').addClass('active');
+    });
+</script>
+
+</html>

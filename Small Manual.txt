@@ -1,0 +1,15 @@
+Prequisites::
+
+	1. This project can be import in any IDE.
+	2. Java8 or latest is required
+	3. Maven3 is required
+	4. MySQL is required
+
+Steps to start project.
+	1. Extract project any where in your directory
+	2. open CMD and go to your directory where you extracted the source code
+	3. run following command to download and install dependencies "mvn clean install"
+	4. import MySQL database in your database. You can find database data on following location of the project: proxyprovider\src\main\resources\ProxyProvider.sql
+	5. Change database properties like username and password in proxyprovider\src\main\resources\application.properties
+	6. Now Run the web appliction in java path like java proxyprovider\src\main\java\com\proxyprovider\ProxyListProvideApplication.java
+	

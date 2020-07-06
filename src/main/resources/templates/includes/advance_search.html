@@ -1,0 +1,76 @@
+<div class="s007" th:fragment ="advance_search" xmlns:th="http://www.thymeleaf.org">
+    <form id="advanceSearch" onsubmit="return false;">
+        <div class="inner-form">
+            <div class="advance-search">
+                    <h2 class="desc">Simple Search</h2>
+                    <div class="row">
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" id="country" name="choices-single-defaul">
+                                    <option placeholder="" value="">Country</option>
+                                    <option th:each="country: ${countryList}" th:value="${country.id}" th:text="${country.name}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" id="portNumber" name="choices-single-defaul">
+                                    <option placeholder="" value="">Port Number</option>
+                                    <option th:each="portL: ${portList}" th:value="${portL}" th:text="${portL}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" id="anonymity" name="choices-single-defaul">
+                                    <option placeholder="" value="">Anonymity</option>
+                                    <option value="">All</option>
+                                    <option th:each="anonymity: ${anonymityList}" th:value="${anonymity.id}" th:text="${anonymity.name}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row second">
+                        <div class="input-field">
+                            <div class="input-select">
+                                <select data-trigger="" id="proxyType" name="choices-single-defaul">
+                                    <option placeholder="" value="">Proxy Type</option>
+                                    <option value="http">HTTP</option>
+                                    <option value="https">HTTPS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+                                <!--<select data-trigger="" id="availability" name="choices-single-defaul">
+                                    <option placeholder="" value="">Availability</option>
+                                    <option value="">All</option>
+                                    <option value="0">&gt;= 100% </option>
+                                    <option value="10">&gt;= 90% </option>
+                                    <option value="20">&gt;= 80% </option>
+                                    <option value="30">&gt;= 70% </option>
+                                    <option value="40">&gt;= 60% </option>
+                                    <option value="50">&gt;= 50% </option>
+                                    <option value="60">&gt;= 40% </option>
+                                    <option value="70">&gt;= 30% </option>
+                                    <option value="80">&gt;= 20% </option>
+                                    <option value="90">&gt;= 10% </option>
+                                </select>-->
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <div class="input-select">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row third">
+                        <div class="input-field">
+                            <button type="submit" class="btn-search">Search</button>
+                            <button class="btn-delete" id="delete">Clear</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </form>
+</div>

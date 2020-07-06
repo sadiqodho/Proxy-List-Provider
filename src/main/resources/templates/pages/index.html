@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Proxy List Provider</title>
+    <div th:replace="includes/head :: head"></div>
+</head>
+
+<body>
+    <nav th:replace="includes/header :: header"></nav>
+
+    <div class="wrap">
+
+        <div th:replace="includes/sidebar :: sidebar"></div>
+        <main role="main" class="container main content">
+
+            <h1> Proxy List </h1>
+            <div th:replace="includes/advance_search :: advance_search"></div>
+            <table id="proxy_datatable" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>IP Address</th>
+                    <th>Port Number</th>
+                    <th>Last Successful Basic Functionality Test</th>
+                    <th>Last Found</th>
+                    <th>First Found</th>
+                    <th>Test URL</th>
+
+                    <<!--th>Anonymity</th>
+                    <th>Proxy Type</th>
+                    <th>Country</th>-->
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>IP Address</th>
+                    <th>Port Number</th>
+                    <th>Last Successful Basic Functionality Test</th>
+                    <th>Last Found</th>
+                    <th>First Found</th>
+                    <th>Test URL</th>
+                </tr>
+                </tfoot>
+            </table>
+
+        </main><!-- /.container -->
+
+    </div>
+
+    <div th:replace="includes/footer :: footer"></div>
+
+    <script>
+        $('document').ready(function(){
+        $('#home-page').addClass('active');
+        $('#home-nav').addClass('active');
+
+        var t = $('#proxy_datatable').DataTable();
+
+        $("#advanceSearch").submit(function( event ) {
+            event.preventDefault();
+            var dataSet = {
+                'country':  $("#country option:selected").val(),
+                'portNumber':  $("#portNumber option:selected").val(),
+                'anonymity':  $("#anonymity option:selected").val(),
+                'proxyType':  $("#proxyType option:selected").val()
+            };
+
+            $.ajax({
+                method: "GET",
+                url: "/proxies",
+                data: dataSet,
+                success: function (response) {
+                    if(response.status === 200){
+                        // remove all rows first
+                        t.rows().remove().draw();
+                        var proxyList = response.proxyList;
+                        for(var i =0; i< proxyList.length; i++){
+                            t.row.add([proxyList[i].id, proxyList[i].ip , proxyList[i].port, proxyList[i].lastBasicFunctionalityTest, proxyList[i].lastFound,
+                                proxyList[i].firstFound, proxyList[i].testURL]).draw(false);
+                        }
+                    } else{
+                        alert(response.message);
+                    }
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            });
+
+        });
+
+     });
+
+    </script>
+
+    <script>
+        const customSelects = document.querySelectorAll("select");
+        const deleteBtn = document.getElementById('delete')
+        const choices = new Choices('select',
+            {
+                searchEnabled: false,
+                removeItemButton: true,
+                itemSelectText: '',
+            });
+
+        for (let i = 0; i < customSelects.length; i++)
+        {
+            customSelects[i].addEventListener('addItem', function(event)
+            {
+                if (event.detail.value)
+                {
+                    let parent = this.parentNode.parentNode
+                    parent.classList.add('valid')
+                    parent.classList.remove('invalid')
+                }
+                else
+                {
+                    let parent = this.parentNode.parentNode
+                    parent.classList.add('invalid')
+                    parent.classList.remove('valid')
+                }
+            }, false);
+        }
+        deleteBtn.addEventListener("click", function(e)
+        {
+            e.preventDefault()
+            const deleteAll = document.querySelectorAll('.choices__button')
+            for (let i = 0; i < deleteAll.length; i++)
+            {
+                deleteAll[i].click();
+            }
+        });
+
+    </script>
+</body>
+
+
+</html>
